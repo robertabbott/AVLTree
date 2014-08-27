@@ -1,6 +1,6 @@
 public class TreeNode {
 	
-	private Object data;
+	private int data;
 	private final Integer key;
 
     private int height = 0;
@@ -9,12 +9,12 @@ public class TreeNode {
 	private TreeNode rightChild = null;
 	private TreeNode parent = null;
 
-    public TreeNode(int key, Object data) {
+    public TreeNode(int key, int data) {
         this.key = key;
         this.data = data;
     }
 
-    public TreeNode(int key, Object data, TreeNode parent) {
+    public TreeNode(int key, int data, TreeNode parent) {
         this.key = key;
         this.data = data;
         this.parent = parent;
@@ -24,7 +24,7 @@ public class TreeNode {
         this.height = height;
     }
 
-    public void setData (Object data) {
+    public void setData (int data) {
     	this.data = data;
     }
 
@@ -56,7 +56,7 @@ public class TreeNode {
     	return this.parent;
     }
 
-    public Object getData () {
+    public int getData () {
     	return this.data;
     }
 
