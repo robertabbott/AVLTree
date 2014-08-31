@@ -1,8 +1,8 @@
 
 public interface Tree {
 
-	public TreeNode child (TreeNode root);
-	public TreeNode parent (TreeNode root);
+	public TreeNode predecessor(TreeNode root);
+	public TreeNode successor (TreeNode root);
 
 	public TreeNode getMin ();
 	public TreeNode getMax ();
