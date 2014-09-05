@@ -137,6 +137,32 @@ public class AVLTree implements Tree {
 		return null; 
 	}
 
+    private TreeNode find(int key, boolean notInTree){
+        TreeNode node = this.root;
+        Node prevNode = this.root;
+        
+        while (node != null) {
+            if (node.getKey() > key) {
+                prevNode = node;
+                node = node.getLeftChild();
+            } 
+            else if (node.getKey() < key) {
+                prevNode = node;
+                node = node.getRightChild();
+            } 
+            else {
+                return node;
+            }
+        }
+
+        if (notInTree){
+            return prevNode;
+        } 
+        else {
+            return null;
+        }
+    }
+
 	private void balanceTree (TreeNode problemNode) {
 
 	}
