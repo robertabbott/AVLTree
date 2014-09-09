@@ -137,12 +137,19 @@ public class AVLTree implements Tree {
 
 	private void switchNode (TreeNode node) {
 		if (node.getLeftChild () == null && node.getRightChild () == null) {
-			node = null
+			return;
 		}
 		else {
 			TreeNode next = findNextSmallest (node);
-			node.setData (next.getData());
-			switchNode (next);
+			if next.getData () > node.getData () {
+				return;
+			}
+			else {
+				temp = next.getData ();
+				next.setData (node.getData());
+				node.setData (temp)
+				switchnode (next)
+			}
 		}
 	}
 
