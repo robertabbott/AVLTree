@@ -123,11 +123,21 @@ public class AVLTree implements Tree {
 		if (node.getLeftChild () == null && node.getRightChild () == null) {
 			node = null
 		}
+		else if (node.getLeftChild () != null && node.getRightChild () == null) {
+			node = node.getLeftChild ();
+		}
+		else if (node.getRightChild () != null && node.getLetChild () == null) {
+			node = node.getRightChild ();
+		}
 		else {
 			TreeNode next = findNextSmallest (node);
 			node.setData (next.getData());
-			// call switchnode until node has no children
-			switchNode (next);
+			if (next.getLeftChild () != null) {
+				next = next.getLeftChild ();
+			}
+			else {
+				next = null;
+			}
 		}
 
 	}
@@ -140,7 +150,7 @@ public class AVLTree implements Tree {
 			return;
 		}
 		else {
-			TreeNode next = findNextSmallest (node);
+			TreeNode next = findNS (node);
 			if next.getData () > node.getData () {
 				return;
 			}
@@ -192,7 +202,15 @@ public class AVLTree implements Tree {
         }
     }
 
-	private TreeNode findNextSmallest (TreeNode node) {
+    private TreeNode findNextSmallest (TreeNode node) {
+    	node = node.getLeftChild ();
+    	while (node.getRightChild () != null) {
+    		node = node.getRightChild ()
+    	}
+    	return node
+    }
+
+	private TreeNode findNS (TreeNode node) {
 		if (node.getLeftChild () == null) {
 			temp = node.getRightChild ();
 			if (temp.getLeftChild () == null) {
