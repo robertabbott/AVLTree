@@ -195,14 +195,18 @@ public class AVLTree implements Tree {
 			}
 			else {
 				while (temp.getRightChild () != null) {
-					temp = temp.getLeftChild ();
+					temp = temp.getRightChild ();
 				}
 				return temp
 			}
 
 		}
 		else {
-			return null;
+			temp = node.getRightChild ();
+			while (temp.getRightChild () != null) {
+				temp = temp.getRightChild ();
+			}
+			return temp
 		}
 	}    
 
