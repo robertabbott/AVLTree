@@ -126,13 +126,25 @@ public class AVLTree implements Tree {
 		else {
 			TreeNode next = findNextSmallest (node);
 			node.setData (next.getData());
-			deleteNode (next);
+			// call switchnode until node has no children
+			switchNode (next);
 		}
 
 	}
 
 
 	// private methods
+
+	private void switchNode (TreeNode node) {
+		if (node.getLeftChild () == null && node.getRightChild () == null) {
+			node = null
+		}
+		else {
+			TreeNode next = findNextSmallest (node);
+			node.setData (next.getData());
+			switchNode (next);
+		}
+	}
 
 	private TreeNode isBalanced (TreeNode node) {
 		if (node.getParent () != null) {
