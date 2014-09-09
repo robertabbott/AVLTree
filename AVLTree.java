@@ -119,11 +119,21 @@ public class AVLTree implements Tree {
 	}
 
 	public void deleteNode (TreeNode node) {
+		// find next smallest 
+		if (node.getLeftChild () == null && node.getRightChild () == null) {
+			node = null
+		}
+		else {
+			TreeNode next = findNextSmallest (node);
+			node.setData (next.getData());
+			deleteNode (next);
+		}
 
 	}
 
 
 	// private methods
+
 	private TreeNode isBalanced (TreeNode node) {
 		if (node.getParent () != null) {
 			if (node.getHeight () > 1) {
@@ -162,6 +172,39 @@ public class AVLTree implements Tree {
             return null;
         }
     }
+
+	private TreeNode findNextSmallest (TreeNode node) {
+		if (node.getLeftChild () == null) {
+			temp = node.getRightChild ();
+			if (temp.getLeftChild () == null) {
+				return temp;
+			}
+			else {
+				while (temp.getLeftChild () != null) {
+					temp = temp.getLeftChild ();
+				}
+				return temp;
+			}
+
+		}
+		else if (node.getRightChild () == null) {
+			// do stuff
+			temp = node.getLeftChild ();
+			if (temp.getRightChild () == null) {
+				return temp;
+			}
+			else {
+				while (temp.getRightChild () != null) {
+					temp = temp.getLeftChild ();
+				}
+				return temp
+			}
+
+		}
+		else {
+			return null;
+		}
+	}    
 
 	private void balanceTree (TreeNode problemNode) {
 
