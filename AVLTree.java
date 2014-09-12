@@ -115,7 +115,8 @@ public class AVLTree implements Tree {
 	}
 
 	public void deleteNodeKey (int key) {
-
+		TreeNode del = find (key, true);
+		deleteNode (del);
 	}
 
 	public void deleteNode (TreeNode node) {
