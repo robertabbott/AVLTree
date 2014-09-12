@@ -254,7 +254,35 @@ public class AVLTree implements Tree {
 
 	private TreeNode findNode (TreeNode node, data) {
 		// inorder dfs
-
+		if (node.getData () == data) {
+			return node;
+		}
+		if (node.getLeftChild () != null) {
+			return findNode (node.getLeftChild (), data);
+		}
+		if (node.getRightChild () != null) {
+			return findNode (node.getRightChild (), data);
+		}
+		if (node.getData () != data) {
+			return null;
+		}
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
