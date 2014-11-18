@@ -249,7 +249,7 @@ public class AVLTree implements Tree {
 	}    
 
 	private void balanceTree (TreeNode problemNode) {
-
+		
 	}
 
 	private TreeNode findNode (TreeNode node, data) {
